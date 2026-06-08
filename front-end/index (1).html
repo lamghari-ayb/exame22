@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vote Électronique — MIAGE Casa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/front-end/assests/css/style.css" />
+</head>
+<body>
+
+  <!-- ─── HEADER ─── -->
+  <header>
+    <div class="logo">MIAGE <span>Vote</span></div>
+    <nav>
+      <button class="nav-btn active" onclick="showSection('candidats', this)">Candidats</button>
+      <button class="nav-btn" onclick="showSection('resultats', this)">Résultats</button>
+    </nav>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">🗳️ Élection du délégué de promotion</div>
+      <h1>Votez pour votre <em>représentant</em></h1>
+      <p>Découvrez les candidats, lisez leurs programmes et exprimez votre choix. Une voix par étudiant.</p>
+    </div>
+
+    <!-- SECTION CANDIDATS & VOTE -->
+    <div id="section-candidats" class="section active">
+
+      <!-- Identifiant étudiant -->
+      <div class="vote-form-wrap">
+        <h2>🎓 Votre identifiant étudiant</h2>
+        <div class="input-group">
+          <label for="student-id">Numéro étudiant</label>
+          <input type="text" id="student-id" placeholder="ex: ETU2024001" maxlength="20" />
+        </div>
+      </div>
+
+      <div class="section-title">Choisissez un candidat</div>
+
+      <!-- Grille des candidats (remplie par JS) -->
+      <div id="cards-grid" class="cards-grid">
+        <div class="loading">
+          <div class="spinner"></div>
+          Chargement des candidats…
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION RÉSULTATS -->
+    <div id="section-resultats" class="section">
+
+      <div class="results-header">
+        <div class="section-title" style="margin:0">Résultats du scrutin</div>
+        <div class="total-votes-badge">
+          Total : <strong id="total-votes">—</strong> votes
+        </div>
+      </div>
+
+      <!-- Liste des résultats (remplie par JS) -->
+      <div id="results-list">
+        <div class="loading">
+          <div class="spinner"></div>
+          Chargement des résultats…
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ─── MODAL CONFIRMATION ─── -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-icon">🗳️</div>
+      <h3>Confirmer votre vote ?</h3>
+      <p id="modal-text">Voulez-vous voter pour ce candidat ? Cette action est <strong>irréversible</strong>.</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+        <button class="btn-confirm" onclick="confirmVote()">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST NOTIFICATION ─── -->
+  <div id="toast" class="toast"></div>
+
+  <script src="/front-end/assests/javascript/app.js"></script>
+</body>
+</html>
